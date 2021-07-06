@@ -1,0 +1,14 @@
+version: '3.7'
+
+services: 
+  xray-daemon:
+    image: amazon/aws-xray-daemon:latest
+    ports:
+      - "2000:2000/udp"
+    environment:
+      - AWS_REGION=ap-northeast-1
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    command:
+      - '-o'
+      - '--log-level=debug'
